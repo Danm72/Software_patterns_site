@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>SqlLiteHelperCountries.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(98,151,85); }
+.s3 { color: rgb(106,135,89); }
+.s4 { color: rgb(104,151,187); }
+.s5 { color: rgb(128,128,128); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+SqlLiteHelperCountries.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">package </span><span class="s1">com.dan.toyapp.database</span><span class="s0">;</span><span class="s1"> 
+<a name="l2"><span class="ln">2    </span></a> 
+<a name="l3"><span class="ln">3    </span></a></span><span class="s0">import </span><span class="s1">android.content.Context</span><span class="s0">;</span><span class="s1"> 
+<a name="l4"><span class="ln">4    </span></a></span><span class="s0">import </span><span class="s1">android.database.sqlite.SQLiteDatabase</span><span class="s0">;</span><span class="s1"> 
+<a name="l5"><span class="ln">5    </span></a></span><span class="s0">import </span><span class="s1">android.database.sqlite.SQLiteOpenHelper</span><span class="s0">;</span><span class="s1"> 
+<a name="l6"><span class="ln">6    </span></a></span><span class="s0">import </span><span class="s1">android.util.Log</span><span class="s0">;</span><span class="s1"> 
+<a name="l7"><span class="ln">7    </span></a> 
+<a name="l8"><span class="ln">8    </span></a></span><span class="s2">/** 
+<a name="l9"><span class="ln">9    </span></a> * Created by danmalone on 18/10/2013. 
+<a name="l10"><span class="ln">10   </span></a> */</span><span class="s1"> 
+<a name="l11"><span class="ln">11   </span></a></span><span class="s0">public class </span><span class="s1">SqlLiteHelperCountries </span><span class="s0">extends </span><span class="s1">SQLiteOpenHelper { 
+<a name="l12"><span class="ln">12   </span></a> 
+<a name="l13"><span class="ln">13   </span></a>    </span><span class="s0">public static final </span><span class="s1">String TABLE_COUNTRIES = </span><span class="s3">&quot;countries&quot;</span><span class="s0">;</span><span class="s1"> 
+<a name="l14"><span class="ln">14   </span></a>    </span><span class="s0">public static final </span><span class="s1">String COLUMN_CODE = </span><span class="s3">&quot;code&quot;</span><span class="s0">;</span><span class="s1"> 
+<a name="l15"><span class="ln">15   </span></a>    </span><span class="s0">public static final </span><span class="s1">String COLUMN_NAME = </span><span class="s3">&quot;name&quot;</span><span class="s0">;</span><span class="s1"> 
+<a name="l16"><span class="ln">16   </span></a> 
+<a name="l17"><span class="ln">17   </span></a>    </span><span class="s0">private static final </span><span class="s1">String DATABASE_NAME = </span><span class="s3">&quot;countries.db&quot;</span><span class="s0">;</span><span class="s1"> 
+<a name="l18"><span class="ln">18   </span></a>    </span><span class="s0">private static final int </span><span class="s1">DATABASE_VERSION = </span><span class="s4">1</span><span class="s0">;</span><span class="s1"> 
+<a name="l19"><span class="ln">19   </span></a> 
+<a name="l20"><span class="ln">20   </span></a>    </span><span class="s5">// Database creation sql statement</span><span class="s1"> 
+<a name="l21"><span class="ln">21   </span></a>    </span><span class="s0">private static final </span><span class="s1">String DATABASE_CREATE = </span><span class="s3">&quot;create table &quot;</span><span class="s1"> 
+<a name="l22"><span class="ln">22   </span></a>            + TABLE_COUNTRIES + </span><span class="s3">&quot;(&quot; </span><span class="s1">+ COLUMN_CODE 
+<a name="l23"><span class="ln">23   </span></a>            + </span><span class="s3">&quot; text not null primary key,&quot;</span><span class="s1">+ COLUMN_NAME + </span><span class="s3">&quot; text not null)&quot;</span><span class="s0">;</span><span class="s1"> 
+<a name="l24"><span class="ln">24   </span></a> 
+<a name="l25"><span class="ln">25   </span></a>    </span><span class="s0">public </span><span class="s1">SqlLiteHelperCountries(Context context) { 
+<a name="l26"><span class="ln">26   </span></a>        </span><span class="s0">super</span><span class="s1">(context</span><span class="s0">, </span><span class="s1">DATABASE_NAME</span><span class="s0">, null, </span><span class="s1">DATABASE_VERSION)</span><span class="s0">;</span><span class="s1"> 
+<a name="l27"><span class="ln">27   </span></a>    } 
+<a name="l28"><span class="ln">28   </span></a> 
+<a name="l29"><span class="ln">29   </span></a>    @Override 
+<a name="l30"><span class="ln">30   </span></a>    </span><span class="s0">public void </span><span class="s1">onCreate(SQLiteDatabase database) { 
+<a name="l31"><span class="ln">31   </span></a>        database.execSQL(DATABASE_CREATE)</span><span class="s0">;</span><span class="s1"> 
+<a name="l32"><span class="ln">32   </span></a>    } 
+<a name="l33"><span class="ln">33   </span></a> 
+<a name="l34"><span class="ln">34   </span></a>    @Override 
+<a name="l35"><span class="ln">35   </span></a>    </span><span class="s0">public void </span><span class="s1">onUpgrade(SQLiteDatabase db</span><span class="s0">, int </span><span class="s1">oldVersion</span><span class="s0">, int </span><span class="s1">newVersion) { 
+<a name="l36"><span class="ln">36   </span></a>        Log.w(SqlLiteHelperCountries.</span><span class="s0">class</span><span class="s1">.getName()</span><span class="s0">,</span><span class="s1"> 
+<a name="l37"><span class="ln">37   </span></a>                </span><span class="s3">&quot;Upgrading database from version &quot; </span><span class="s1">+ oldVersion + </span><span class="s3">&quot; to &quot;</span><span class="s1"> 
+<a name="l38"><span class="ln">38   </span></a>                        + newVersion + </span><span class="s3">&quot;, which will destroy all old data&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+<a name="l39"><span class="ln">39   </span></a>        db.execSQL(</span><span class="s3">&quot;DROP TABLE IF EXISTS &quot; </span><span class="s1">+ TABLE_COUNTRIES)</span><span class="s0">;</span><span class="s1"> 
+<a name="l40"><span class="ln">40   </span></a>        onCreate(db)</span><span class="s0">;</span><span class="s1"> 
+<a name="l41"><span class="ln">41   </span></a>    } 
+<a name="l42"><span class="ln">42   </span></a> 
+<a name="l43"><span class="ln">43   </span></a>} 
+<a name="l44"><span class="ln">44   </span></a></span></pre>
+</body>
+</html>
